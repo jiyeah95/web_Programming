@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>위시리스트</title>
+
+    <link rel="stylesheet"
+          href="/stylesheets/style.css">
+    <%- include('partials/header') %>
+</head>
+<body>
+
+<div class="page-title">
+
+    <h1>❤️ 위시리스트</h1>
+
+    <p>
+        찜한 상품 목록입니다.
+    </p>
+
+</div>
+
+<div class="products">
+
+    <% products.forEach(product => { %>
+
+        <div class="product-card">
+
+            <img
+                    src="<%= product.image %>"
+                    alt="<%= product.name %>">
+
+            <h3>
+                <%= product.emoji %>
+                <%= product.name %>
+            </h3>
+
+            <p class="description">
+                <%= product.description %>
+            </p>
+
+            <p class="price">
+                ₩<%= product.price.toLocaleString() %>
+            </p>
+
+        </div>
+
+    <% }) %>
+
+</div>
+
+<% if(products.length === 0){ %>
+
+    <div class="empty-cart">
+
+        <h3>
+            찜한 상품이 없습니다.
+        </h3>
+
+    </div>
+
+<% } %>
+
+</body>
+</html>

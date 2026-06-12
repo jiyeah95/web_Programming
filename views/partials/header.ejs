@@ -1,0 +1,59 @@
+<nav class="menu">
+
+    <div class="menu-left">
+
+        <a href="/">홈</a>
+
+        <a href="/product">
+            상품목록
+        </a>
+
+        <a href="/cart">
+            장바구니
+        </a>
+
+        <a href="/order">
+            주문내역
+        </a>
+
+        <a href="/user/mypage">
+            마이페이지
+        </a>
+
+        <a href="/board">
+            고객센터
+        </a>
+
+    </div>
+
+    <div class="menu-right">
+
+        <% if(!user) { %>
+
+            <a href="/user/login">
+                로그인
+            </a>
+
+            <a href="/user/register">
+                회원가입
+            </a>
+
+        <% } else { %>
+
+            <a
+                    href="/user/mypage"
+                    class="menu-user">
+
+                👤 <%= user.name %>님
+
+            </a>
+
+            <a href="/user/logout">
+                로그아웃
+            </a>
+
+        <% } %>
+
+    </div>
+
+</nav>

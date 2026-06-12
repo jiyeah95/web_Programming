@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>약관동의</title>
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+
+<div class="agree-box">
+    <div class="step-box">
+
+    <span class="step-done">
+        ✓ 가입여부확인
+    </span>
+
+        →
+
+        <span class="step-current">
+        ② 약관동의
+    </span>
+
+        →
+
+        <span class="step-wait">
+        ③ 회원정보입력
+    </span>
+
+        →
+
+        <span class="step-wait">
+        ④ 가입완료
+    </span>
+
+    </div>
+
+    <h2 class="member-title">
+        약관동의
+    </h2>
+
+    <form action="/user/registerForm" method="get">
+
+        <p>
+            <input
+                    type="checkbox"
+                    required>
+
+            이용약관 동의 (필수)
+        </p>
+
+        <hr>
+
+        <p>
+            <input
+                    type="checkbox"
+                    required>
+
+            개인정보 활용 동의 (필수)
+        </p>
+
+        <hr>
+
+        <p>
+            <input
+                    type="checkbox">
+
+            SMS 수신 동의 (선택)
+        </p>
+
+        <hr>
+
+        <p>
+            <input
+                    type="checkbox">
+
+            이메일 수신 동의 (선택)
+        </p>
+
+        <br>
+
+        <div style="text-align:center;">
+
+            <button
+                    type="submit"
+                    class="member-btn">
+
+                다음
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div>
+
+</body>
+</html>

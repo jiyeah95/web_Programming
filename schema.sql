@@ -1,8 +1,24 @@
 CREATE TABLE IF NOT EXISTS users (
                                      id INTEGER PRIMARY KEY AUTOINCREMENT,
+
                                      username TEXT UNIQUE NOT NULL,
                                      password TEXT NOT NULL,
-                                     name TEXT NOT NULL
+
+                                     name TEXT NOT NULL,
+                                     email TEXT UNIQUE NOT NULL,
+
+                                     phone TEXT NOT NULL,
+
+                                     birth TEXT NOT NULL,
+
+                                     gender TEXT,
+
+                                     address TEXT,
+
+                                     agree_privacy INTEGER NOT NULL,
+
+                                     agree_sms INTEGER DEFAULT 0,
+                                     agree_email INTEGER DEFAULT 0
 );
 
 CREATE TABLE IF NOT EXISTS posts (
@@ -19,8 +35,8 @@ CREATE TABLE IF NOT EXISTS files (
                                      post_id INTEGER NOT NULL,
                                      filename TEXT NOT NULL,
                                      filepath TEXT NOT NULL,
-                                     FOREIGN KEY(post.id) REFERENCES posts(id)
-);
+                                     FOREIGN KEY(post_id) REFERENCES posts(id)
+    );
 
 CREATE TABLE IF NOT EXISTS products (
                                         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -41,4 +57,11 @@ CREATE TABLE IF NOT EXISTS order_items (
                                            product_name TEXT NOT NULL,
                                            price INTEGER NOT NULL,
                                            quantity INTEGER NOT NULL
+);
+
+
+CREATE TABLE IF NOT EXISTS wishlist (
+                                        id INTEGER PRIMARY KEY AUTOINCREMENT,
+                                        user_id INTEGER NOT NULL,
+                                        product_id INTEGER NOT NULL
 );

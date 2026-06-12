@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>로그인 실패</title>
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+    <style>
+
+        .fail-container{
+
+            width:500px;
+
+            margin:100px auto;
+
+            background:white;
+
+            text-align:center;
+
+            padding:50px;
+
+            border-radius:15px;
+
+            box-shadow:0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .fail-title{
+
+            color:#d63031;
+
+            font-size:32px;
+
+            font-weight:bold;
+
+            margin-bottom:30px;
+        }
+
+        .fail-message{
+
+            font-size:20px;
+
+            margin-bottom:15px;
+        }
+
+        .fail-sub{
+
+            color:#555;
+
+            margin-bottom:40px;
+        }
+
+        .login-btn{
+
+            display:inline-block;
+
+            background:#2563eb;
+
+            color:white;
+
+            text-decoration:none;
+
+            padding:15px 35px;
+
+            border-radius:10px;
+
+            font-size:18px;
+
+            font-weight:bold;
+        }
+
+        .login-btn:hover{
+
+            background:#1e4bb8;
+        }
+
+    </style>
+
+</head>
+<body>
+
+<div class="fail-container">
+
+    <div class="fail-title">
+        ❌ 비밀번호가 일치하지 않습니다.
+    </div>
+
+    <div class="fail-message">
+        아이디와 비밀번호를 다시 확인해 주세요.
+    </div>
+
+    <br>
+
+    <a
+            class="login-btn"
+            href="/user/login">
+
+        🔑 다시 로그인하기
+
+    </a>
+
+</div>
+
+</body>
+</html>

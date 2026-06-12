@@ -1,6 +1,5 @@
 const productRouter = require("./routes/product");
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 const userRouter = require('./routes/user');
 const boardRouter = require('./routes/board');
 const cartRouter = require("./routes/cart");
@@ -40,7 +39,6 @@ app.use((req, res, next) => {
 
 app.use('/', indexRouter);
 app.use('/user', userRouter);
-app.use('/users', usersRouter);
 app.use('/board', boardRouter);
 app.use("/product", productRouter);
 app.use("/cart", cartRouter);

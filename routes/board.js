@@ -85,36 +85,45 @@ router.post('/write', (req, res) => {
 });
 
 // 게시글 상세보기
-router.get('/detail/:id', (req, res) => {
+router.get("/detail/:id", (req, res) => {
 
-    const postId = req.params.id;
+    const id = req.params.id;
 
     db.get(
-        'SELECT * FROM posts WHERE id = ?',
-        [postId],
-        (err, row) => {
+        "SELECT * FROM posts WHERE id=?",
+        [id],
+        (err, post) => {
 
-            if (err || !row) {
-                return res.send('게시글 없음');
+            if (!post) {
+                return res.send("게시글이 없습니다.");
             }
 
-            const utcDate =
-                new Date(row.created_at + " UTC");
+            db.get(
+                "SELECT id, title FROM posts WHERE id < ? ORDER BY id DESC LIMIT 1",
+                [id],
+                (err, prevPost) => {
 
-            row.created_at =
-                utcDate.toLocaleString(
-                    "ko-KR",
-                    {
-                        timeZone: "Asia/Seoul"
-                    }
-                );
+                    db.get(
+                        "SELECT id, title FROM posts WHERE id > ? ORDER BY id ASC LIMIT 1",
+                        [id],
+                        (err, nextPost) => {
 
-            res.render('detail', {
-                post: row,
-                user: req.session.user
-            });
+                            res.render("detail", {
+                                post,
+                                prevPost,
+                                nextPost,
+                                user: req.session.user
+                            });
+
+                        }
+                    );
+
+                }
+            );
+
         }
     );
+
 });
 
 // 수정 화면

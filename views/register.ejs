@@ -1,32 +1,382 @@
-<h2>회원가입</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
 
-<form action="/user/register" method="post">
-    <input
-            type="text"
-            name="username"
-            placeholder="아이디"
-            required>
+    <style>
 
-    <br><br>
+        .required {
+            color:red;
+        }
 
-    <input
-            type="text"
-            name="name"
-            placeholder="이름"
-            required>
+        table {
+            border-collapse: collapse;
+        }
 
-    <br><br>
+        td {
+            padding:8px;
+        }
 
-    <input
-            type="password"
-            name="password"
-            placeholder="비밀번호"
-            required>
+    </style>
 
-    <br><br>
+</head>
+<body>
 
-    <button type="submit">
-        가입하기
-    </button>
+<div class="member-container">
+    <div class="step-box">
 
-</form>
+    <span class="step-done">
+        ✓ 가입여부확인
+    </span>
+
+        →
+
+        <span class="step-done">
+        ✓ 약관동의
+    </span>
+
+        →
+
+        <span class="step-current">
+        ③ 회원정보입력
+    </span>
+
+        →
+
+        <span class="step-wait">
+        ④ 가입완료
+    </span>
+
+    </div>
+
+    <h2 class="member-title">
+        회원정보 입력
+    </h2>
+
+    <form
+            action="/user/register"
+            method="post"
+            onsubmit="return validateForm()">
+
+        <table class="member-table">
+
+            <tr>
+                <td>
+                    이메일 <span class="required">*</span>
+                </td>
+                <td>
+                    <input
+                            type="email"
+                            name="email"
+                            id="email"
+                            class="member-input"
+                            oninput="emailChecked=false"
+                            required>
+
+                    <button
+                            type="button"
+                            onclick="checkEmail()">
+                        중복확인
+                    </button>
+
+                    <span id="emailResult"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    이름 <span class="required">*</span>
+                </td>
+                <td>
+                    <input
+                            type="text"
+                            name="name"
+                            class="member-input"
+                            required>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    아이디 <span class="required">*</span>
+                </td>
+                <td>
+                    <input
+                            type="text"
+                            name="username"
+                            id="username"
+                            class="member-input"
+                            oninput="usernameChecked=false"
+                            required>
+
+                    <button
+                            type="button"
+                            onclick="checkUsername()">
+                        중복확인
+                    </button>
+
+                    <span id="usernameResult"></span>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    비밀번호 <span class="required">*</span>
+                </td>
+                <td>
+                    <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            class="member-input"
+                            required>
+
+                    <button
+                            type="button"
+                            onclick="togglePassword('password')">
+                        👁
+                    </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    비밀번호 확인 <span class="required">*</span>
+                </td>
+                <td>
+                    <input
+                            type="password"
+                            name="password2"
+                            id="password2"
+                            class="member-input"
+                            required>
+
+                    <button
+                            type="button"
+                            onclick="togglePassword('password2')">
+                        👁
+                    </button>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    연락처 <span class="required">*</span>
+                </td>
+                <td>
+                    <input
+                            type="text"
+                            name="phone"
+                            class="member-input"
+                            placeholder="010-1234-5678"
+                            required>
+                </td>
+            </tr>
+
+            <tr>
+                <td>
+                    생년월일 <span class="required">*</span>
+                </td>
+                <td>
+                    <input
+                            type="date"
+                            name="birth"
+                            class="member-input"
+                            required>
+                </td>
+            </tr>
+
+            <tr>
+                <td>성별</td>
+                <td>
+
+                    <label>
+                        <input
+                                type="radio"
+                                name="gender"
+                                value="남">
+                        남
+                    </label>
+
+                    <label>
+                        <input
+                                type="radio"
+                                name="gender"
+                                value="여">
+                        여
+                    </label>
+
+                </td>
+            </tr>
+
+            <tr>
+                <td>주소</td>
+                <td>
+                    <input
+                            type="text"
+                            class="member-input"
+                            name="address">
+                </td>
+            </tr>
+
+        </table>
+
+        <br>
+
+        <button
+                type="submit"
+                class="member-btn">
+            회원가입
+        </button>
+
+    </form>
+</div>
+<script>
+    let usernameChecked = false;
+    let emailChecked = false;
+
+    async function checkUsername() {
+
+        const username =
+            document.getElementById("username").value;
+
+        const response =
+            await fetch(
+                `/user/check-username?username=${username}`
+            );
+
+        const result =
+            await response.text();
+
+        document.getElementById(
+            "usernameResult"
+        ).innerText = result;
+
+        usernameChecked =
+            result.includes("사용 가능");
+    }
+
+    async function checkEmail() {
+
+        const email =
+            document.getElementById("email").value;
+
+        const response =
+            await fetch(
+                `/user/check-email?email=${email}`
+            );
+
+        const result =
+            await response.text();
+
+        document.getElementById(
+            "emailResult"
+        ).innerText = result;
+
+        emailChecked =
+            result.includes("사용 가능");
+    }
+
+
+    function togglePassword(id) {
+
+        const input =
+            document.getElementById(id);
+
+        if (input.type === "password") {
+            input.type = "text";
+        }
+        else {
+            input.type = "password";
+        }
+    }
+    function validateForm() {
+
+        const username =
+            document.getElementById("username").value;
+
+        const email =
+            document.getElementById("email").value;
+
+        const password =
+            document.getElementById("password").value;
+
+        const password2 =
+            document.getElementById("password2").value;
+
+        const phone =
+            document.querySelector(
+                'input[name="phone"]'
+            ).value;
+
+        if (!usernameChecked) {
+
+            alert(
+                "아이디 중복확인을 해주세요."
+            );
+
+            return false;
+        }
+
+        if (!emailChecked) {
+
+            alert(
+                "이메일 중복확인을 해주세요."
+            );
+
+            return false;
+        }
+
+        const emailRegex =
+            /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+
+        if (!emailRegex.test(email)) {
+
+            alert(
+                "올바른 이메일 형식이 아닙니다."
+            );
+
+            return false;
+        }
+
+        const passwordRegex =
+            /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+        if (!passwordRegex.test(password)) {
+
+            alert(
+                "비밀번호는 8자 이상, 대문자·소문자·숫자를 포함해야 합니다."
+            );
+
+            return false;
+        }
+
+        if (password !== password2) {
+
+            alert(
+                "비밀번호가 일치하지 않습니다."
+            );
+
+            return false;
+        }
+
+        const phoneRegex =
+            /^010-\d{4}-\d{4}$/;
+
+        if (!phoneRegex.test(phone)) {
+
+            alert(
+                "연락처는 010-1234-5678 형식으로 입력해주세요."
+            );
+
+            return false;
+        }
+
+        return true;
+    }
+</script>
+
+</body>
+</html>

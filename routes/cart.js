@@ -7,6 +7,7 @@ const router = express.Router();
 const dbPath = path.join(__dirname, "../db/database.sqlite");
 const db = new sqlite3.Database(dbPath);
 
+
 // 로그인 체크
 function checkLogin(req, res, next) {
 
@@ -22,6 +23,9 @@ router.post("/add/:id", checkLogin, (req, res) => {
 
     const productId = req.params.id;
     const userId = req.session.user.id;
+
+    const returnUrl =
+        req.body.returnUrl || "/product";
 
     db.get(
         "SELECT * FROM cart WHERE product_id = ? AND user_id = ?",
@@ -44,7 +48,7 @@ router.post("/add/:id", checkLogin, (req, res) => {
                             return res.send("DB 오류");
                         }
 
-                        res.redirect("/product");
+                        res.redirect(returnUrl);
                     }
                 );
 
@@ -59,7 +63,7 @@ router.post("/add/:id", checkLogin, (req, res) => {
                             return res.send("DB 오류");
                         }
 
-                        res.redirect("/product");
+                        res.redirect(returnUrl);
                     }
                 );
 
@@ -89,7 +93,8 @@ router.get("/", checkLogin, (req, res) => {
     db.all(sql, [userId], (err, rows) => {
 
         if (err) {
-            return res.send("DB 오류");
+            console.error(err);
+            return res.send(err.message);
         }
 
         const totalPrice = rows.reduce(

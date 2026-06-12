@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>마이페이지</title>
+
+    <link rel="stylesheet"
+          href="/stylesheets/style.css">
+</head>
+<body>
+
+<div class="member-container">
+
+    <h2 class="member-title">
+        👤 마이페이지
+    </h2>
+
+    <table class="member-table">
+
+        <tr>
+            <td>이름</td>
+            <td><%= user.name %></td>
+        </tr>
+
+        <tr>
+            <td>아이디</td>
+            <td><%= user.username %></td>
+        </tr>
+
+        <tr>
+            <td>이메일</td>
+            <td><%= user.email %></td>
+        </tr>
+
+        <tr>
+            <td>연락처</td>
+            <td><%= user.phone %></td>
+        </tr>
+
+        <tr>
+            <td>주소</td>
+            <td><%= user.address || '-' %></td>
+        </tr>
+
+    </table>
+
+    <br>
+
+    <div class="mypage-menu">
+
+        <a href="/user/profile" class="mypage-card">
+
+            <div class="mypage-icon">
+                👤
+            </div>
+
+            <div>
+                회원정보 수정
+            </div>
+
+        </a>
+
+        <a href="/order" class="mypage-card">
+
+            <div class="mypage-icon">
+                📦
+            </div>
+
+            <div>
+                주문내역
+            </div>
+
+        </a>
+
+        <a href="/user/address" class="mypage-card">
+
+            <div class="mypage-icon">
+                🚚
+            </div>
+
+            <div>
+                배송지 관리
+            </div>
+
+        </a>
+
+        <a href="/user/wishlist" class="mypage-card">
+
+            <div class="mypage-icon">
+                ❤️
+            </div>
+
+            <div>
+                위시리스트
+            </div>
+
+        </a>
+    </div>
+
+        <hr style="margin-top:40px;">
+
+        <div style="text-align:center;">
+
+            <a
+                    href="/"
+                    class="member-btn">
+
+                🏠 홈
+
+            </a>
+
+            <a
+                    href="/product"
+                    class="member-btn">
+
+                🛍 상품목록
+
+            </a>
+
+            <a
+                    href="/cart"
+                    class="member-btn">
+
+                🛒 장바구니
+
+            </a>
+
+        </div>
+</div>
+
+</body>
+</html>

@@ -1,25 +1,138 @@
-<h2>로그인</h2>
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>로그인</title>
 
-<form action="/user/login" method="post">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
 
-    <input
-            type="text"
-            name="username"
-            placeholder="아이디"
-            required>
+<div class="member-container">
 
-    <br><br>
+    <div style="text-align:center;">
 
-    <input
-            type="password"
-            name="password"
-            placeholder="비밀번호"
-            required>
+        <img
+                src="/images/default.png"
+                width="150"
+                alt="logo">
 
-    <br><br>
+    </div>
 
-    <button type="submit">
-        로그인
-    </button>
+    <h2 class="member-title">
+        🍎 과일 쇼핑몰 로그인
+    </h2>
 
-</form>
+    <form action="/user/login" method="post">
+
+        <table class="member-table">
+
+            <tr>
+
+                <td width="120">
+                    아이디
+                </td>
+
+                <td>
+
+                    <input
+                            type="text"
+                            name="username"
+                            class="member-input"
+                            required>
+
+                </td>
+
+            </tr>
+
+            <tr>
+
+                <td>
+                    비밀번호
+                </td>
+
+                <td>
+
+                    <input
+                            type="password"
+                            name="password"
+                            id="password"
+                            class="member-input"
+                            required>
+
+                    <button
+                            type="button"
+                            class="check-btn"
+                            onclick="togglePassword()">
+
+                        👁
+
+                    </button>
+
+                </td>
+
+            </tr>
+
+        </table>
+
+        <br>
+
+        <div style="text-align:center;">
+
+            <button
+                    type="submit"
+                    class="member-btn">
+
+                로그인
+
+            </button>
+
+        </div>
+
+        <br>
+
+        <div style="text-align:center;">
+
+            <a href="/user/find-id">
+                아이디 찾기
+            </a>
+
+            |
+
+            <a href="/user/find-password">
+                비밀번호 찾기
+            </a>
+
+            |
+
+            <a href="/user/register">
+                회원가입
+            </a>
+
+        </div>
+
+    </form>
+
+</div>
+
+<script>
+
+    function togglePassword() {
+
+        const input =
+            document.getElementById("password");
+
+        if (input.type === "password") {
+
+            input.type = "text";
+        }
+        else {
+
+            input.type = "password";
+        }
+    }
+
+</script>
+
+</body>
+</html>
