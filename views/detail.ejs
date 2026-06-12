@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 상세보기</title>
+
+    <style>
+        .disabled {
+            color: #999;
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+    </style>
+
+</head>
+<body>
+
+<h1><%= post.title %></h1>
+
+<hr>
+
+<p>
+    작성자 :
+    <%= post.author %>
+</p>
+
+<%
+const isAuthor =
+        user && user.name === post.author;
+
+const isAdmin =
+        user && user.name === 'admin';
+
+const canDelete =
+        isAuthor ||
+        (post.author === '익명' && isAdmin);
+%>
+
+<p>
+    작성일 :
+    <%= post.created_at %>
+</p>
+
+<hr>
+
+<p>
+    <%= post.content %>
+</p>
+
+<hr>
+
+<% if (user && user.name === post.author) { %>
+
+    <a href="/board/edit/<%= post.id %>">
+        수정
+    </a>
+
+<% } else { %>
+
+    <span class="disabled">
+        수정
+    </span>
+
+<% } %>
+
+<br><br>
+
+<% if (user && user.name === post.author) { %>
+
+    <a href="/board/delete/<%= post.id %>"
+       onclick="return confirm('정말 삭제하시겠습니까?')">
+        삭제
+    </a>
+
+<% } else { %>
+
+    <span class="disabled">
+        삭제
+    </span>
+
+<% } %>
+<br><br>
+
+<a href="/board/reply/<%= post.id %>">
+    답글
+</a>
+
+<br><br>
+
+<a href="/board">
+    <목록으로></목록으로>
+</a>
+
+</body>
+</html>

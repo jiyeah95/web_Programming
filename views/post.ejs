@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>글쓰기</title>
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+
+<header>
+
+    <div class="login-area">
+
+        <span>
+            <%= user.name %>님 환영합니다.
+        </span>
+
+        |
+        <a href="/user/logout">
+            로그아웃
+        </a>
+
+    </div>
+
+</header>
+
+<nav class="menu">
+
+    <a href="/">홈</a>
+    <a href="/product">추천상품</a>
+    <a href="/product/all">전체상품</a>
+    <a href="/cart">장바구니</a>
+    <a href="/order">주문내역</a>
+    <a href="/board">고객센터</a>
+
+</nav>
+
+<div class="page-title">
+
+    <h1>✏️ 게시글 작성</h1>
+
+    <p>
+        문의사항을 작성해주세요.
+    </p>
+
+</div>
+
+<div class="write-container">
+
+    <form action="/board/write" method="post">
+
+        <input
+                type="text"
+                name="title"
+                class="input-title"
+                placeholder="제목을 입력하세요"
+                required
+        >
+
+        <p>
+            작성자 :
+            <strong><%= user.name %></strong>
+        </p>
+
+        <label>
+
+            <input
+                    type="checkbox"
+                    name="anonymous"
+                    value="1"
+            >
+
+            익명으로 작성
+
+        </label>
+
+        <br><br>
+
+        <textarea
+                name="content"
+                class="input-content"
+                placeholder="내용을 입력하세요"
+                required
+        ></textarea>
+
+        <br><br>
+
+        <button
+                type="submit"
+                class="save-btn"
+        >
+            저장
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

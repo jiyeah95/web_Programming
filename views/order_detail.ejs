@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>주문 상세보기</title>
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+
+<header>
+    <div class="login-area">
+        <span><%= user.name %>님 환영합니다.</span>
+        |
+        <a href="/user/logout">로그아웃</a>
+    </div>
+</header>
+
+<nav class="menu">
+    <a href="/">홈</a>
+    <a href="/product">추천상품</a>
+    <a href="/product/all">전체상품</a>
+    <a href="/cart">장바구니</a>
+    <a href="/order">주문내역</a>
+    <a href="/board">고객센터</a>
+</nav>
+
+<div class="page-title">
+    <h1>🧾 주문 상세보기</h1>
+    <p>주문일 : <%= order.created_at_kor %></p>
+</div>
+
+<div class="cart-container">
+
+    <table class="cart-table">
+        <tr>
+            <th>상품명</th>
+            <th>가격</th>
+            <th>수량</th>
+            <th>합계</th>
+        </tr>
+
+        <% items.forEach(item => { %>
+            <tr>
+                <td><%= item.product_name %></td>
+
+                <td>
+                    ₩<%= item.price.toLocaleString() %>
+                </td>
+
+                <td>
+                    <%= item.quantity %>개
+                </td>
+
+                <td>
+                    ₩<%= (item.price * item.quantity).toLocaleString() %>
+                </td>
+            </tr>
+        <% }) %>
+    </table>
+
+    <div class="cart-summary">
+        <h2>
+            총 금액 :
+            ₩<%= order.total_price.toLocaleString() %>
+        </h2>
+
+        <a href="/order">
+            ← 주문내역으로 돌아가기
+        </a>
+    </div>
+
+</div>
+
+</body>
+</html>

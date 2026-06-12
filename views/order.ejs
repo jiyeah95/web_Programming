@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>주문내역</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+
+<header>
+
+    <div class="login-area">
+
+        <% if(!user){ %>
+
+            <a href="/user/login">로그인</a>
+            |
+            <a href="/user/register">회원가입</a>
+
+        <% } else { %>
+
+            <span>
+                <%= user.name %>님 환영합니다.
+            </span>
+
+            |
+            <a href="/user/logout">로그아웃</a>
+
+        <% } %>
+
+    </div>
+
+</header>
+
+<nav class="menu">
+
+    <a href="/">홈</a>
+    <a href="/product">추천상품</a>
+    <a href="/product/all">전체상품</a>
+    <a href="/cart">장바구니</a>
+    <a href="/order">주문내역</a>
+    <a href="/board">고객센터</a>
+
+</nav>
+
+<div class="page-title">
+
+    <h1>📦 주문 내역</h1>
+
+    <p>
+        지금까지 주문한 상품 목록입니다.
+    </p>
+
+</div>
+
+<div class="cart-container">
+
+    <% if(orders.length === 0){ %>
+
+        <div class="empty-cart">
+
+            주문 내역이 없습니다.
+
+        </div>
+
+    <% } else { %>
+
+        <table class="cart-table">
+
+            <tr>
+                <th>내 주문번호</th>
+                <th>총금액</th>
+                <th>주문일</th>
+                <th>상세보기</th>
+            </tr>
+
+            <% orders.forEach(order => { %>
+
+                <tr>
+
+                    <td>
+                        <%= order.order_no %>
+                    </td>
+
+                    <td>
+                        ₩<%= order.total_price.toLocaleString() %>
+                    </td>
+
+                    <td>
+                        <%= order.created_at_kor %>
+                    </td>
+
+                    <td>
+
+                        <a href="/order/<%= order.id %>">
+                            보기
+                        </a>
+
+                    </td>
+
+                </tr>
+
+            <% }) %>
+
+        </table>
+
+    <% } %>
+
+</div>
+
+</body>
+</html>

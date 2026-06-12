@@ -1,0 +1,594 @@
+body{
+
+  margin:0;
+  padding:0;
+
+  font-family: Arial, sans-serif;
+
+  background-color:#f5f5f5;
+
+}
+
+.login-area{
+
+  text-align:right;
+
+  padding:15px;
+
+}
+
+.login-area a{
+
+  text-decoration:none;
+  color:#333;
+
+}
+
+.menu{
+
+  background-color:#4CAF50;
+
+  padding:15px;
+
+  text-align:center;
+
+}
+
+.menu a{
+
+  color:white;
+
+  text-decoration:none;
+
+  margin:0 20px;
+
+  font-weight:bold;
+
+}
+
+.menu a:hover{
+
+  text-decoration:underline;
+
+}
+
+.main-title{
+
+  text-align:center;
+
+  margin-top:30px;
+
+}
+
+.banner{
+
+  text-align:center;
+
+  margin-top:30px;
+
+}
+
+.banner-image{
+
+  width:500px;
+  border-radius:20px;
+  box-shadow:0 0 10px rgba(0,0,0,0.2);
+
+}
+
+.banner-text{
+
+  margin-top:15px;
+
+  font-size:20px;
+
+  font-weight:bold;
+
+}
+
+.section-title{
+
+  text-align:center;
+
+  margin-top:50px;
+
+}
+
+.recommend{
+
+  display:flex;
+
+  justify-content:center;
+
+  gap:30px;
+
+  margin-top:20px;
+
+  flex-wrap:wrap;
+
+}
+
+.card{
+
+  width:180px;
+
+  background:white;
+
+  padding:15px;
+
+  border-radius:10px;
+
+  text-align:center;
+
+  box-shadow:0 0 10px rgba(0,0,0,0.1);
+
+}
+
+.card img{
+
+  width:150px;
+
+  border-radius:10px;
+
+}
+
+.card p{
+
+  margin-top:10px;
+
+  font-weight:bold;
+
+}
+
+footer{
+
+  margin-top:60px;
+
+  text-align:center;
+
+  color:gray;
+
+  padding-bottom:30px;
+
+}
+
+.card{
+  width:180px;
+  background:white;
+  padding:15px;
+  border-radius:15px;
+
+  text-align:center;
+
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+
+  transition:0.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+}
+
+/* 전체 상품 목록*/
+.page-title{
+
+  text-align:center;
+
+  margin-top:30px;
+  margin-bottom:40px;
+
+}
+
+.products{
+
+  display:flex;
+
+  justify-content:center;
+
+  flex-wrap:wrap;
+
+  gap:25px;
+
+}
+
+.product-card{
+
+  width:220px;
+
+  background:white;
+
+  border-radius:15px;
+
+  overflow:hidden;
+
+  box-shadow:0 4px 12px rgba(0,0,0,0.15);
+
+  transition:0.3s;
+
+  text-align:center;
+
+  padding-bottom:15px;
+
+}
+
+.product-card:hover{
+
+  transform:translateY(-8px);
+
+}
+
+.product-card img{
+
+  width:100%;
+  height:180px;
+
+  object-fit:cover;
+
+}
+
+.product-card h3{
+
+  margin-top:15px;
+
+}
+
+.description{
+
+  padding:0 10px;
+
+  min-height:50px;
+
+}
+
+.price{
+
+  font-size:20px;
+
+  font-weight:bold;
+
+  color:#28a745;
+
+}
+
+.product-card button{
+
+  background:#28a745;
+
+  color:white;
+
+  border:none;
+
+  padding:10px 18px;
+
+  border-radius:5px;
+
+  cursor:pointer;
+
+}
+
+.product-card button:hover{
+
+  background:#218838;
+
+}
+
+/* 추천 상품 목록 */
+/* ===================================
+   장바구니
+=================================== */
+
+.cart-container{
+
+  width:90%;
+  max-width:1000px;
+
+  margin:0 auto 50px auto;
+}
+
+.cart-table{
+
+  width:100%;
+
+  background:white;
+
+  border-collapse:collapse;
+
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+.cart-table th{
+
+  background:#4CAF50;
+
+  color:white;
+
+  padding:15px;
+}
+
+.cart-table td{
+
+  padding:15px;
+
+  text-align:center;
+
+  border-bottom:1px solid #eee;
+}
+
+.qty-btn{
+
+  width:35px;
+
+  height:35px;
+
+  margin:0 8px;
+
+  border:none;
+
+  border-radius:5px;
+
+  background:#4CAF50;
+
+  color:white;
+
+  cursor:pointer;
+}
+
+.qty-btn:hover{
+
+  background:#3d9440;
+}
+
+.delete-btn{
+
+  background:#dc3545;
+
+  color:white;
+
+  border:none;
+
+  padding:8px 15px;
+
+  border-radius:5px;
+
+  cursor:pointer;
+}
+
+.delete-btn:hover{
+
+  background:#c82333;
+}
+
+.cart-summary{
+
+  text-align:right;
+
+  margin-top:30px;
+}
+
+.order-btn{
+
+  background:#28a745;
+
+  color:white;
+
+  border:none;
+
+  padding:12px 25px;
+
+  border-radius:5px;
+
+  font-size:16px;
+
+  cursor:pointer;
+}
+
+.order-btn:hover{
+
+  background:#218838;
+}
+
+.empty-cart{
+
+  background:white;
+
+  padding:40px;
+
+  text-align:center;
+
+  border-radius:10px;
+
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* ===================================
+   주문내역
+=================================== */
+
+.order-link{
+
+  color:#4CAF50;
+
+  font-weight:bold;
+
+  text-decoration:none;
+}
+
+.order-link:hover{
+
+  text-decoration:underline;
+}
+
+/* ===================================
+   게시판
+=================================== */
+
+.board-container{
+
+  width:90%;
+
+  max-width:1000px;
+
+  margin:0 auto 50px auto;
+}
+
+.board-header{
+
+  display:flex;
+
+  justify-content:flex-end;
+
+  margin-bottom:20px;
+}
+
+.write-btn{
+
+  background:#4CAF50;
+
+  color:white;
+
+  text-decoration:none;
+
+  padding:10px 20px;
+
+  border-radius:5px;
+
+  font-weight:bold;
+}
+
+.write-btn:hover{
+
+  background:#3d9440;
+}
+
+.board-table{
+
+  width:100%;
+
+  border-collapse:collapse;
+
+  background:white;
+
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+.board-table th{
+
+  background:#4CAF50;
+
+  color:white;
+
+  padding:15px;
+}
+
+.board-table td{
+
+  padding:15px;
+
+  border-bottom:1px solid #eee;
+}
+
+.board-link{
+
+  color:#333;
+
+  text-decoration:none;
+}
+
+.board-link:hover{
+
+  color:#4CAF50;
+}
+
+/* ===================================
+   게시글 작성
+=================================== */
+
+.write-container{
+
+  width:90%;
+
+  max-width:800px;
+
+  margin:0 auto 50px auto;
+
+  background:white;
+
+  padding:30px;
+
+  border-radius:10px;
+
+  box-shadow:0 4px 12px rgba(0,0,0,0.1);
+}
+
+.input-title{
+
+  width:100%;
+
+  padding:12px;
+
+  font-size:16px;
+
+  border:1px solid #ddd;
+
+  border-radius:5px;
+}
+
+.input-content{
+
+  width:100%;
+
+  height:250px;
+
+  padding:12px;
+
+  font-size:15px;
+
+  border:1px solid #ddd;
+
+  border-radius:5px;
+
+  resize:vertical;
+}
+
+.save-btn{
+
+  background:#4CAF50;
+
+  color:white;
+
+  border:none;
+
+  padding:12px 25px;
+
+  border-radius:5px;
+
+  cursor:pointer;
+
+  font-size:16px;
+}
+
+.save-btn:hover{
+
+  background:#3d9440;
+}
+.cancel-btn{
+
+  display:inline-block;
+
+  margin-left:10px;
+
+  background:#6c757d;
+
+  color:white;
+
+  text-decoration:none;
+
+  padding:12px 25px;
+
+  border-radius:5px;
+}
+
+.cancel-btn:hover{
+
+  background:#5a6268;
+}

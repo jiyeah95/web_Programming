@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>과일 쇼핑몰</title>
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const phrases = [
+
+                "🍓 오늘의 신선한 과일을 만나보세요!",
+                "🍌 인기 많은 과일을 지금 확인해보세요!",
+                "🍊 달콤한 오렌지, 무료배송 중!",
+                "🍇 포도로 건강 챙기세요!"
+
+            ];
+
+            const bannerText =
+                document.getElementById("banner-text");
+
+            let current = 0;
+
+            setInterval(() => {
+
+                current =
+                    (current + 1) % phrases.length;
+
+                bannerText.textContent =
+                    phrases[current];
+
+            }, 3000);
+
+        });
+
+    </script>
+
+</head>
+
+<body>
+
+<header>
+
+    <div class="login-area">
+
+        <% if(!user) { %>
+
+            <a href="/user/login">로그인</a>
+            |
+            <a href="/user/register">회원가입</a>
+
+        <% } else { %>
+
+            <span>
+                <%= user.name %>님 환영합니다.
+            </span>
+
+            |
+            <a href="/user/logout">로그아웃</a>
+
+        <% } %>
+
+    </div>
+
+</header>
+
+<nav class="menu">
+
+    <a href="/">홈</a>
+    <a href="/product">상품목록</a>
+    <a href="/cart">장바구니</a>
+    <a href="/order">주문내역</a>
+    <a href="/board">고객센터</a>
+
+</nav>
+
+<div class="main-title">
+
+    <h1>🍎 과일 쇼핑몰</h1>
+
+    <p>
+        신선한 과일을 합리적인 가격에 만나보세요.
+    </p>
+
+</div>
+
+<div class="banner">
+
+    <img
+            src="/images/default.png"
+            alt="대표 과일"
+            class="banner-image"
+    >
+
+    <div id="banner-text" class="banner-text">
+
+        🍓 오늘의 신선한 과일을 만나보세요!
+
+    </div>
+
+</div>
+
+<hr>
+
+<h2 class="section-title">
+    ⭐ 추천 상품
+</h2>
+
+<div class="recommend">
+
+    <div class="card">
+
+        <img
+                src="/images/default.png"
+                alt="추천상품1"
+        >
+
+        <p>사과</p>
+
+    </div>
+
+    <div class="card">
+
+        <img
+                src="/images/default.png"
+                alt="추천상품2"
+        >
+
+        <p>바나나</p>
+
+    </div>
+
+    <div class="card">
+
+        <img
+                src="/images/default.png"
+                alt="추천상품3"
+        >
+
+        <p>오렌지</p>
+
+    </div>
+
+</div>
+
+<footer>
+
+    <hr>
+
+    <p>
+        Fruit Shopping Mall
+    </p>
+
+    <p>
+        2026 Web Programming Project
+    </p>
+
+</footer>
+
+</body>
+</html>

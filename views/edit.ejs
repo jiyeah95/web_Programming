@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>게시글 수정</title>
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+
+<header>
+
+    <div class="login-area">
+
+        <span>
+            <%= user.name %>님 환영합니다.
+        </span>
+
+        |
+        <a href="/user/logout">
+            로그아웃
+        </a>
+
+    </div>
+
+</header>
+
+<nav class="menu">
+
+    <a href="/">홈</a>
+    <a href="/product">추천상품</a>
+    <a href="/product/all">전체상품</a>
+    <a href="/cart">장바구니</a>
+    <a href="/order">주문내역</a>
+    <a href="/board">고객센터</a>
+
+</nav>
+
+<div class="page-title">
+
+    <h1>✏️ 게시글 수정</h1>
+
+    <p>
+        게시글 내용을 수정합니다.
+    </p>
+
+</div>
+
+<div class="write-container">
+
+    <form action="/board/edit/<%= post.id %>" method="post">
+
+        <input
+                type="text"
+                name="title"
+                class="input-title"
+                value="<%= post.title %>"
+                required
+        >
+
+        <br><br>
+
+        <textarea
+                name="content"
+                class="input-content"
+                required
+        ><%= post.content %></textarea>
+
+        <br><br>
+
+        <button
+                type="submit"
+                class="save-btn"
+        >
+            수정 완료
+        </button>
+
+        <a
+                href="/board/detail/<%= post.id %>"
+                class="cancel-btn"
+        >
+            취소
+        </a>
+
+    </form>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>고객센터</title>
+
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+
+<header>
+
+    <div class="login-area">
+
+        <% if(!user){ %>
+
+            <a href="/user/login">로그인</a>
+            |
+            <a href="/user/register">회원가입</a>
+
+        <% } else { %>
+
+            <span>
+                <%= user.name %>님 환영합니다.
+            </span>
+
+            |
+            <a href="/user/logout">로그아웃</a>
+
+        <% } %>
+
+    </div>
+
+</header>
+
+<nav class="menu">
+
+    <a href="/">홈</a>
+    <a href="/product">추천상품</a>
+    <a href="/product/all">전체상품</a>
+    <a href="/cart">장바구니</a>
+    <a href="/order">주문내역</a>
+    <a href="/board">고객센터</a>
+
+</nav>
+
+<div class="page-title">
+
+    <h1>📢 고객센터</h1>
+
+    <p>
+        문의사항을 남겨주세요.
+    </p>
+
+</div>
+
+<div class="board-container">
+
+    <div class="board-header">
+
+        <a
+                href="/board/write"
+                class="write-btn"
+        >
+            글쓰기
+        </a>
+
+    </div>
+
+    <% if(posts.length === 0){ %>
+
+        <div class="empty-cart">
+
+            등록된 게시글이 없습니다.
+
+        </div>
+
+    <% } else { %>
+
+        <table class="board-table">
+
+            <tr>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>작성일</th>
+            </tr>
+
+            <% posts.forEach(post => { %>
+
+                <tr>
+
+                    <td>
+
+                        <a
+                                href="/board/detail/<%= post.id %>"
+                                class="board-link"
+                        >
+
+                            <% if(post.parent_id){ %>
+                                └─ [답글]
+                            <% } %>
+
+                            <%= post.title %>
+
+                        </a>
+
+                    </td>
+
+                    <td>
+                        <%= post.author || "익명" %>
+                    </td>
+                    <td>
+                        <%= post.created_at_kor %>
+                    </td>
+
+                </tr>
+
+            <% }) %>
+
+        </table>
+
+    <% } %>
+
+</div>
+
+</body>
+</html>
