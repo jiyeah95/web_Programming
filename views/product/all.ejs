@@ -26,16 +26,33 @@
 
     <% products.forEach(product => { %>
 
-        <div class="product-card">
+        <div
+                class="product-card"
+                onclick="location.href='/product/detail/<%= product.id %>'"
+                style="cursor:pointer;">
 
-            <img
-                    src="<%= product.image %>"
-                    alt="<%= product.name %>"
-            >
+            <a href="/product/detail/<%= product.id %>">
+
+                <img
+                        src="<%= product.image %>"
+                        alt="<%= product.name %>">
+
+            </a>
 
             <h3>
-                <%= product.emoji %>
-                <%= product.name %>
+
+                <a
+                        href="/product/detail/<%= product.id %>"
+                        style="
+                text-decoration:none;
+                color:black;
+            ">
+
+                    <%= product.emoji %>
+                    <%= product.name %>
+
+                </a>
+
             </h3>
 
             <p class="description">
@@ -46,7 +63,10 @@
                 ₩<%= product.price.toLocaleString() %>
             </p>
 
-            <form action="/cart/add/<%= product.id %>" method="POST">
+            <form
+                    action="/cart/add/<%= product.id %>"
+                    method="POST"
+                    onsubmit="return askCart()">
 
                 <input
                         type="hidden"
@@ -85,6 +105,21 @@
     <% }) %>
 
 </div>
+
+<script>
+
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get("cart") === "1") {
+
+        if (confirm("🛒 상품이 장바구니에 담겼습니다.\n장바구니로 이동하시겠습니까?")) {
+
+            location.href = "/cart";
+        }
+    }
+
+</script>
+
 
 </body>
 </html>

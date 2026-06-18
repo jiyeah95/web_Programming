@@ -54,6 +54,51 @@ router.get("/", (req, res) => {
     );
 });
 
+router.get("/detail/:id", (req, res) => {
+
+    const id = req.params.id;
+
+    db.get(
+        "SELECT * FROM products WHERE id = ?",
+        [id],
+        (err, product) => {
+
+            if (err || !product) {
+                return res.send("상품을 찾을 수 없습니다.");
+            }
+
+            res.render("product/detail", {
+                product
+            });
+        }
+    );
+});
+
+router.get("/detail/:id", (req, res) => {
+
+    const id = req.params.id;
+
+    db.get(
+        "SELECT * FROM products WHERE id=?",
+        [id],
+        (err, product) => {
+
+            if (err || !product) {
+
+                return res.send(
+                    "상품을 찾을 수 없습니다."
+                );
+            }
+
+            res.render(
+                "product/detail",
+                {
+                    product
+                }
+            );
+        }
+    );
+});
 
 // 전체 상품 보기
 router.get("/all", (req, res) => {
@@ -117,5 +162,29 @@ router.post(
         );
     }
 );
+
+// 찜하기 삭제
+router.post("/wishlist/delete/:id", checkLogin, (req, res) => {
+
+    const productId = req.params.id;
+    const userId = req.session.user.id;
+
+    db.run(
+        `
+        DELETE FROM wishlist
+        WHERE user_id = ?
+        AND product_id = ?
+        `,
+        [userId, productId],
+        (err) => {
+
+            if (err) {
+                return res.send("삭제 실패");
+            }
+
+            res.redirect("/user/wishlist");
+        }
+    );
+});
 
 module.exports = router;

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title><%= product.name %> 상세보기</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <%- include('../partials/header') %>
+
+    <style>
+        body {
+            background:#f7f7f7;
+            font-family:'맑은 고딕', sans-serif;
+        }
+
+        .product-detail-container {
+            width:1000px;
+            margin:60px auto;
+            background:white;
+            border-radius:22px;
+            box-shadow:0 6px 25px rgba(0,0,0,0.12);
+            display:flex;
+            gap:50px;
+            padding:50px;
+        }
+
+        .detail-img-box {
+            width:460px;
+        }
+
+        .detail-img-box img {
+            width:100%;
+            height:380px;
+            object-fit:cover;
+            border-radius:18px;
+        }
+
+        .detail-info {
+            flex:1;
+        }
+
+        .detail-info h1 {
+            font-size:42px;
+            margin-bottom:20px;
+        }
+
+        .detail-desc {
+            font-size:20px;
+            color:#555;
+            margin-bottom:30px;
+            line-height:1.7;
+        }
+
+        .detail-price {
+            font-size:34px;
+            font-weight:bold;
+            color:#22a33b;
+            margin-bottom:30px;
+        }
+
+        .detail-extra {
+            background:#f1f8f3;
+            padding:20px;
+            border-radius:14px;
+            font-size:17px;
+            line-height:1.8;
+            margin-bottom:30px;
+        }
+
+        .detail-buttons {
+            display:flex;
+            gap:15px;
+            margin-top:25px;
+        }
+
+        .detail-buttons button,
+        .detail-buttons a {
+            border:none;
+            padding:15px 28px;
+            border-radius:10px;
+            font-size:17px;
+            font-weight:bold;
+            text-decoration:none;
+            cursor:pointer;
+        }
+
+        .cart-btn {
+            background:#28a745;
+            color:white;
+        }
+
+        .back-btn {
+            background:#eeeeee;
+            color:#333;
+        }
+    </style>
+</head>
+<body>
+
+<div class="product-detail-container">
+
+    <div class="detail-img-box">
+        <img src="<%= product.image %>" alt="<%= product.name %>">
+    </div>
+
+    <div class="detail-info">
+
+        <h1>
+            <%= product.emoji %> <%= product.name %>
+        </h1>
+
+        <p class="detail-desc">
+            <%= product.description %>
+        </p>
+
+        <div class="detail-price">
+            ₩<%= product.price.toLocaleString() %>
+        </div>
+
+        <div class="detail-extra">
+            ✅ 신선한 과일만 선별하여 판매합니다.<br>
+            ✅ 당일 입고 상품을 기준으로 준비됩니다.<br>
+            ✅ 과일 쇼핑몰 추천 상품입니다.
+        </div>
+
+        <div class="detail-buttons">
+
+            <form
+                    action="/cart/add/<%= product.id %>"
+                    method="POST"
+                    onsubmit="return askCart()">
+                <input type="hidden" name="returnUrl" value="/product/detail/<%= product.id %>">
+
+                <button type="submit" class="cart-btn">
+                    🛒 장바구니 담기
+                </button>
+            </form>
+
+            <a href="/product" class="back-btn">
+                목록으로 돌아가기
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+    const params = new URLSearchParams(window.location.search);
+
+    if (params.get("cart") === "1") {
+
+        if (confirm("🛒 상품이 장바구니에 담겼습니다.\n장바구니로 이동하시겠습니까?")) {
+
+            location.href = "/cart";
+        }
+    }
+
+</script>
+
+</body>
+</html>

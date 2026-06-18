@@ -42,8 +42,18 @@
             <p class="price">
                 ₩<%= product.price.toLocaleString() %>
             </p>
+            <form
+                    action="/product/wishlist/delete/<%= product.id %>"
+                    method="POST">
 
+                <button class="wishlist-delete-btn">
+                    ❤️ 삭제
+                </button>
+
+            </form>
         </div>
+
+
 
     <% }) %>
 

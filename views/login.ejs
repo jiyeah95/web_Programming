@@ -23,6 +23,17 @@
         🍎 과일 쇼핑몰 로그인
     </h2>
 
+    <% if (error) { %>
+        <div style="
+        color:red;
+        text-align:center;
+        margin-bottom:15px;
+        font-weight:bold;
+    ">
+            <%= error %>
+        </div>
+    <% } %>
+
     <form action="/user/login" method="post">
 
         <table class="member-table">

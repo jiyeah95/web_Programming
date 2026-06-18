@@ -48,7 +48,7 @@ router.post("/add/:id", checkLogin, (req, res) => {
                             return res.send("DB 오류");
                         }
 
-                        res.redirect(returnUrl);
+                        res.redirect(returnUrl + "?cart=1");
                     }
                 );
 
@@ -63,7 +63,7 @@ router.post("/add/:id", checkLogin, (req, res) => {
                             return res.send("DB 오류");
                         }
 
-                        res.redirect(returnUrl);
+                        res.redirect(returnUrl + "?cart=1");
                     }
                 );
 

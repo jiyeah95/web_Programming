@@ -1,41 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>회원가입 완료</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+
+    <style>
+
+        body{
+            background:#f5f6fa;
+            font-family:'맑은 고딕', sans-serif;
+        }
+
+        .complete-box{
+            width:500px;
+            margin:100px auto;
+            background:white;
+            padding:50px;
+            border-radius:20px;
+            box-shadow:0 5px 20px rgba(0,0,0,0.1);
+            text-align:center;
+        }
+
+        .icon{
+            font-size:60px;
+        }
+
+        .title{
+            font-size:40px;
+            font-weight:bold;
+            margin-top:20px;
+            color:#333;
+        }
+
+        .msg{
+            margin-top:30px;
+            font-size:20px;
+            color:#666;
+        }
+
+        .login-btn{
+            display:inline-block;
+            margin-top:40px;
+            background:#ff6b6b;
+            color:white;
+            text-decoration:none;
+            padding:15px 40px;
+            border-radius:12px;
+            font-size:20px;
+            transition:0.3s;
+        }
+
+        .login-btn:hover{
+            background:#ff5252;
+        }
+
+    </style>
+</head>
+<body>
+
 <div class="complete-box">
-    <div class="step-box">
 
-    <span class="step-done">
-        ✓ 가입여부확인
-    </span>
-
-        →
-
-        <span class="step-done">
-        ✓ 약관동의
-    </span>
-
-        →
-
-        <span class="step-done">
-        ✓ 회원정보입력
-    </span>
-
-        →
-
-        <span class="step-current">
-        ✓ 가입완료
-    </span>
-
+    <div class="icon">
+        🎉
     </div>
 
-    <h2>🎉 회원가입 완료</h2>
+    <div class="title">
+        회원가입 완료
+    </div>
 
-    <p>
-        회원가입이 정상적으로 완료되었습니다.
-    </p>
+    <div class="msg">
+        회원가입이 정상적으로 완료되었습니다.<br>
+        로그인 후 과일 쇼핑몰을 이용해보세요!
+    </div>
 
-    <br>
-
-    <a href="/user/login"
-       class="member-btn">
+    <a href="/user/login" class="login-btn">
         로그인 하러가기
     </a>
 
 </div>
+
+</body>
+</html>
